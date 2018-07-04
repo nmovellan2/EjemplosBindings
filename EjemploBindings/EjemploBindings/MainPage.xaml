@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EjemploBindings"
+             xmlns:converter="clr-namespace:EjemploBindings.Converter"
+             x:Class="EjemploBindings.MainPage">
+    <!--declaracion de recursos staticos-->
+    <ContentPage.Resources>
+        <converter:RotationToColorConverter x:Key="RotationToColorConverter"/>
+        <converter:RotationColorToText x:Key="RotationColorToText"/>
+    </ContentPage.Resources>
+
+    <StackLayout>
+
+        <Label Text="Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" 
+           BindingContext="{x:Reference slider}" Rotation="{Binding Value}" TextColor="{Binding Value,Converter={StaticResource RotationToColorConverter}}" />
+        <Label BindingContext="{x:Reference slider}" Text="{Binding Value, Converter={StaticResource RotationColorToText}}" ></Label>
+        <!-- x:reference para hacer referencia a un objeto de mi misma pagina-->
+        
+        <Slider x:Name="slider" Maximum="360"/>
+    </StackLayout>
+
+</ContentPage>
