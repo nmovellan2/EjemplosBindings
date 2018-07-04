@@ -11,7 +11,7 @@ namespace EjemploBindings
 		{
 			InitializeComponent();
 
-			MainPage = new Views.SemaphoreView();
+			MainPage = new Views.SampleListView();
 		}
 
 		protected override void OnStart ()
