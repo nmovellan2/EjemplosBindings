@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters ="clr-namespace:EjemploBindings.Converter"
+             xmlns:viewmodels="clr-namespace:EjemploBindings.ViewsModels"
+             x:Class="EjemploBindings.Views.SemaphoreView">
+    <!--Binding con el contexto del ViewModel-->            
+    <ContentPage.BindingContext>
+        <viewmodels:SemaphoreViewModel/>
+    </ContentPage.BindingContext>
+    <!--Resources staticos-->
+    <ContentPage.Resources>
+        <converters:SemaphoreToColorConverter x:Key="SemaphoreToColorConverter"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <BoxView BackgroundColor="{Binding Semaphore.SemaphoreState, Converter={StaticResource SemaphoreToColorConverter}}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
