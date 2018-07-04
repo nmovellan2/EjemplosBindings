@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace EjemploBindings.ViewsModels
@@ -19,10 +20,29 @@ namespace EjemploBindings.ViewsModels
                 Name = "Semaforo 1",
                 SemaphoreState = SemaphoreState.Green
             };
+            ChangeStateCommand = new Command(OnChangeState);
+        }
+
+        private void OnChangeState(object obj)
+        {
+            switch (Semaphore.SemaphoreState)
+            {
+                case SemaphoreState.Green:
+                    Semaphore.SemaphoreState = SemaphoreState.Red;
+                    break;
+                case SemaphoreState.Yellow:
+                    Semaphore.SemaphoreState = SemaphoreState.Red;
+                    break;
+                case SemaphoreState.Red:
+                    Semaphore.SemaphoreState = SemaphoreState.Green;
+                    break;
+                default:
+                    break;
+            }
         }
         #endregion
 
-
+        public ICommand ChangeStateCommand { get; set; }
         private Semaphore _semaphore;
         public Semaphore Semaphore {
             get => _semaphore;

@@ -6,7 +6,7 @@
              x:Class="EjemploBindings.Views.SemaphoreView">
     <!--Binding con el contexto del ViewModel-->            
     <ContentPage.BindingContext>
-        <viewmodels:SemaphoreViewModel/>
+        <viewmodels:SemaphoreViewModel />
     </ContentPage.BindingContext>
     <!--Resources staticos-->
     <ContentPage.Resources>
@@ -15,6 +15,7 @@
     <ContentPage.Content>
         <StackLayout>
             <BoxView BackgroundColor="{Binding Semaphore.SemaphoreState, Converter={StaticResource SemaphoreToColorConverter}}"/>
+            <Button Text="Change state" Command="{Binding ChangeStateCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

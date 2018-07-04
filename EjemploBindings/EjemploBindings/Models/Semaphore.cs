@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace EjemploBindings.Models
 {
@@ -14,9 +16,9 @@ namespace EjemploBindings.Models
     #endregion
 
 
-    public class Semaphore
+    public class Semaphore:BindableObject
     {
-
+       
         public string Name { get; set; }
         private SemaphoreState _semaphoreState;
         public SemaphoreState SemaphoreState
@@ -28,6 +30,7 @@ namespace EjemploBindings.Models
             set
             {
                 _semaphoreState = value;
+                OnPropertyChanged();
             }
         }
     }
